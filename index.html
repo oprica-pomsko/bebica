@@ -36,6 +36,13 @@
             font-size: 16px;
             cursor: pointer;
         }
+        img {
+            max-width: 90%;
+            height: auto;
+            border: 2px solid white;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -56,7 +63,7 @@
     <!-- Secret Content (Hidden by Default) -->
     <div id="secret-content" class="hidden">
         <h1>Milica Stevanović je najslađa bebica na svetu!</h1>
-        <p><a id="hidden-image-link" class="hidden" href="#" target="_blank">Click here to see the image</a></p>
+        <img id="dynamic-image" class="hidden" alt="Bebica">
     </div>
 
     <script>
@@ -72,11 +79,11 @@
                 // Show the secret content
                 document.getElementById("secret-content").classList.remove("hidden");
 
-                // Reveal the hidden image link dynamically
-                const imageUrl = "bebica.jpg"; // Change to your image URL
-                const imageLink = document.getElementById("hidden-image-link");
-                imageLink.href = imageUrl;
-                imageLink.classList.remove("hidden");
+                // Fetch and display the image dynamically
+                const imageUrl = "https://ibb.co/mYCR3Rj"; // Change to your actual image URL
+                const imageElement = document.getElementById("dynamic-image");
+                imageElement.src = imageUrl;
+                imageElement.classList.remove("hidden");
             } else {
                 alert("Incorrect password. Try again.");
             }
