@@ -1,36 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pomsko</title>
     <style>
-      body {
-        background-color: #121212; /* Dark background */
-        color: white; /* Text color */
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        font-family: Arial, sans-serif;
-        text-align: center;
-      }
-      h1 {
-        margin-bottom: 20px;
-      }
-      img {
-        max-width: 90%;
-        height: auto;
-        border: 2px solid white;
-        border-radius: 8px;
-      }
+        body {
+            background-color: #121212; /* Dark background */
+            color: white; /* Text color */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        img {
+            max-width: 90%;
+            height: auto;
+            border: 2px solid white;
+            border-radius: 8px;
+        }
+        .hidden {
+            display: none;
+        }
+        #login-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+        input {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
     </style>
-  </head>
-  <body>
-    <h1>Milica Stevanović je najslađa bebica na svetu!🥰😚❤️</h1>
-    <img src="bebica.jpg" alt="Bebica" />
-  </body>
-</html>
+</head>
+<body>
 
+    <!-- Fake "Under Construction" message (Default View) -->
+    <div id="public-content">
+        <h1>Website Not Available</h1>
+        <p>We're working on something new. Check back later!</p>
+    </div>
+
+    <!-- Login Box -->
+    <div id="login-box">
+        <p>Enter password to access:</p>
+        <input type="password" id="password-input" placeholder="Enter password">
+        <button onclick="checkPassword()">Submit</button>
+    </div>
+
+    <!-- Secret Content (Hidden by Default) -->
+    <div id="secret-content" class="hidden">
+        <h1>Milica Stevanović je najslađa bebica na svetu!</h1>
+        <img src="bebica.jpg" alt="Bebica">
+    </div>
+
+    <script>
+        function checkPassword() {
+            const password = document.getElementById("password-input").value;
+            const correctPassword = "jasambebica";  // Change this!
+
+            if (password === correctPassword) {
+                // Hide login box and public content
+                document.getElementById("login-box").style.display = "none";
+                document.getElementById("public-content").style.display = "none";
+
+                // Show the secret content
+                document.getElementById("secret-content").classList.remove("hidden");
+            } else {
+                alert("Incorrect password. Try again.");
+            }
+        }
+    </script>
+
+</body>
+</html>
